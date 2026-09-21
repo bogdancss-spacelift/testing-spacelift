@@ -1,17 +1,16 @@
 terraform {
   required_providers {
-    spacelift = {
-      source  = "spacelift-io/spacelift"
-      version = "~> 1.0"
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.0"
     }
   }
 }
 
-provider "spacelift" {}
+resource "random_pet" "test" {
+  length = 2
+}
 
-resource "spacelift_stack" "kaboom" {
-  name           = "kaboom"
-  branch         = "master"
-  repository     = "demo"
-  worker_pool_id = "01EGJJ0HNKQW51GSJY2F8Q077Z"
+output "pet_name" {
+  value = random_pet.test.id
 }
