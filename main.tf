@@ -1,12 +1,13 @@
-provider "spacelift" {}
-
 terraform {
   required_providers {
     spacelift = {
-      source = "registry.spacelift.io/spacelift-io/spacelift"
+      source  = "spacelift-io/spacelift"
+      version = "~> 1.0"
     }
   }
 }
+
+provider "spacelift" {}
 
 resource "spacelift_stack" "kaboom" {
   name           = "kaboom"
